@@ -1,3 +1,4 @@
+from pathlib import Path
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
@@ -21,13 +22,17 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 
+
+
 app.mount(
     "/static",
     StaticFiles(directory=BASE_DIR / "static"),
     name="static",
 )
 
-templates = Jinja2Templates(directory=BASE_DIR / "templates")
+templates = Jinja2Templates(
+    directory=BASE_DIR / "templates"
+)
 
 
 class ChatRequest(BaseModel):
@@ -39,7 +44,6 @@ async def home(request: Request):
     return templates.TemplateResponse(
         request=request,
         name="index.html",
-        context={}
     )
 
 @app.post("/chat")
