@@ -38,12 +38,12 @@ class ChatRequest(BaseModel):
     question: str
 
 
-@app.get("/")
-async def home():
-    return {
-        "version": "68cc553",
-        "status": "NEW CODE"
-    }
+@app.get("/", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="index.html",
+    )
 
 @app.post("/chat")
 def chat(request: ChatRequest):
