@@ -1,4 +1,4 @@
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 
 PROMPT = ChatPromptTemplate.from_template("""
 You are HorizonAI, the official AI Customer Support Assistant for Horizon Tours & Travel.
