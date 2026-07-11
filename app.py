@@ -18,7 +18,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 
